@@ -10,13 +10,13 @@ import java.util.List;
 public class PilotoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long piloto_id;
     private String nome;
     private String numeroLicenca;
     private int idade;
     private int experiencia;
     @ManyToMany(mappedBy = "pilotos")
     private List<AviaoModel> avioes;
-    @OneToMany(mappedBy = "pilotos")//um-para-muitos
+    @OneToMany(mappedBy = "piloto")
     private List<AgendaModel> agendas;
 }

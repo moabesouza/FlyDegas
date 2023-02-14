@@ -10,15 +10,21 @@ import java.util.List;
 public class AviaoModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long aviao_id;
 	private String prefixo;
 	private String modelo;
 	private int ano;
 	private int autonomia;
 	private int numPassageiros;
 	@ManyToMany
+	@JoinTable(
+			name = "aviao_piloto",
+			joinColumns = @JoinColumn(name = "aviao_id"),
+			inverseJoinColumns = @JoinColumn(name = "piloto_id")
+	)
 	private List<PilotoModel> pilotos;
-	@OneToMany(mappedBy = "aviao")//um-para-muitos
+
+	@OneToMany(mappedBy = "aviao")
 	private List<VooModel> voos;
 
 	public void update(AviaoForm aviaoForm) {

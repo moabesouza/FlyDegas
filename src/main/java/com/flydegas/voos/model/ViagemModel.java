@@ -10,7 +10,7 @@ public class ViagemModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long viagem_id;
     @ManyToOne
     @JoinColumn(name = "agenda_id")
     private AgendaModel agenda;
