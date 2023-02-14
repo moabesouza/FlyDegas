@@ -118,4 +118,7 @@ public class AviaoController {
 		return ResponseEntity.badRequest().build();
 	}
 	}
+
+	public static class ViagemController {
+	}
 }
