@@ -1,15 +1,11 @@
 package com.flydegas.voos.model;
-
 import com.flydegas.voos.form.AviaoForm;
+import jakarta.persistence.*;
+import lombok.Data;
+import java.util.List;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity 
+@Data
+@Entity
 @Table(name = "aviao")
 public class AviaoModel {
 	@Id
@@ -20,8 +16,11 @@ public class AviaoModel {
 	private int ano;
 	private int autonomia;
 	private int numPassageiros;
-	
-	
+	@ManyToMany
+	private List<PilotoModel> pilotos;
+	@OneToMany//um-para-muitos
+	private List<VooModel> voos;
+
 	public void update(AviaoForm aviaoForm) {
 		this.prefixo = aviaoForm.getPrefixo();
 		this.modelo = aviaoForm.getModelo();
@@ -29,14 +28,9 @@ public class AviaoModel {
 		this.autonomia = aviaoForm.getAutonomia();
 		this.numPassageiros = aviaoForm.getNumPassageiros();	
 	}
-	
-	
-	
 	public AviaoModel() {
 		super();
-	
 	}
-	
 	public AviaoModel(String prefixo, String modelo, int ano, int autonomia, int numPassageiros) {
 		super();
 		this.prefixo = prefixo;
@@ -45,47 +39,4 @@ public class AviaoModel {
 		this.autonomia = autonomia;
 		this.numPassageiros = numPassageiros;
 	}
-	
-	public String getPrefixo() {
-		return prefixo;
-	}
-	public void setPrefixo(String prefixo) {
-		this.prefixo = prefixo;
-	}
-	public String getModelo() {
-		return modelo;
-	}
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
-	public int getAno() {
-		return ano;
-	}
-	public void setAno(int ano) {
-		this.ano = ano;
-	}
-	public int getAutonomia() {
-		return autonomia;
-	}
-	public void setAutonomia(int autonomia) {
-		this.autonomia = autonomia;
-	}
-	public int getNumPassageiros() {
-		return numPassageiros;
-	}
-	public void setNumPassageiros(int numPassageiros) {
-		this.numPassageiros = numPassageiros;
-	}
-
-	public Long getID() {
-		return id;
-	}
-
-	public void setID(Long iD) {
-		id = iD;
-	}
-	
-	
-	
-
 }

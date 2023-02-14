@@ -102,8 +102,7 @@ public class AviaoController {
 	}else {
 		return ResponseEntity.notFound().build();
 	}
-	
-	
+
 	}
 
 	@DeleteMapping("{id}")
