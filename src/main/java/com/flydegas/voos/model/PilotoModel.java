@@ -17,6 +17,6 @@ public class PilotoModel {
     private int experiencia;
     @ManyToMany(mappedBy = "pilotos")
     private List<AviaoModel> avioes;
-    @OneToMany(mappedBy = "piloto")//um-para-muitos
+    @OneToMany(mappedBy = "pilotos")//um-para-muitos
     private List<AgendaModel> agendas;
 }

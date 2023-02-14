@@ -1,7 +1,6 @@
 package com.flydegas.voos.model;
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.Date;
 
 @Data

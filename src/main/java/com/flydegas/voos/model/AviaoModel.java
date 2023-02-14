@@ -18,7 +18,7 @@ public class AviaoModel {
 	private int numPassageiros;
 	@ManyToMany
 	private List<PilotoModel> pilotos;
-	@OneToMany//um-para-muitos
+	@OneToMany(mappedBy = "aviao")//um-para-muitos
 	private List<VooModel> voos;
 
 	public void update(AviaoForm aviaoForm) {
