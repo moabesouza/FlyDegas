@@ -11,10 +11,14 @@ public class PilotoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long piloto_id;
+    @Column(nullable = false, length = 250)
     private String nome;
+    @Column(nullable = false, unique = true)
     private String numeroLicenca;
+    @Column(nullable = false)
     private int idade;
-    private int experiencia;
+    @Column(nullable = false)
+    private int anoExperiencia;
     @ManyToMany(mappedBy = "pilotos")
     private List<AviaoModel> avioes;
     @OneToMany(mappedBy = "piloto")

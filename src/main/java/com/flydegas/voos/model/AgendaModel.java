@@ -13,6 +13,7 @@ public class AgendaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long agenda_id;
+    @Column(nullable = false)
     private LocalDate data;
     @ManyToOne
     @JoinColumn(name = "piloto_id")

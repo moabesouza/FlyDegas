@@ -25,11 +25,11 @@ public class VooModel {
     @ManyToOne
     @JoinColumn(name = "aeroporto_chegada_id")
     private AeroportoModel aeroportoChegada;
-
+    @Column(nullable = false)
     private LocalDate data;
-
+    @Column(nullable = false)
     private LocalTime horaSaida;
-
+    @Column(nullable = false)
     private LocalTime horaChegada;
 
     @OneToMany(mappedBy = "voo")

@@ -11,10 +11,16 @@ public class AviaoModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long aviao_id;
+
+	@Column(nullable = false, length = 50)
 	private String prefixo;
+	@Column(nullable = false, length = 250)
 	private String modelo;
+	@Column(nullable = false, length = 4)
 	private int ano;
+	@Column(nullable = false)
 	private int autonomia;
+	@Column(nullable = false)
 	private int numPassageiros;
 	@ManyToMany
 	@JoinTable(

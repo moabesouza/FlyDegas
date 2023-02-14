@@ -12,8 +12,11 @@ public class AeroportoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long aeroporto_id;
+    @Column(nullable = false, length = 250)
     private String nome;
+    @Column(nullable = false, length = 250)
     private String cidade;
+    @Column(nullable = false, length = 250)
     private String pais;
     @OneToMany(mappedBy = "aeroportoSaida")
     private List<VooModel> voosSaida;
