@@ -1,4 +1,8 @@
 package com.flydegas.voos.repository;
 
-public interface AeroportoRepository {
+
+import com.flydegas.voos.model.AeroportoModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AeroportoRepository extends JpaRepository<AeroportoModel, Long> {
 }
