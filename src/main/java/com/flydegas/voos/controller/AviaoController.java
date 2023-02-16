@@ -36,19 +36,7 @@ public class AviaoController {
 		for (AviaoModel e:embarque)
 			lista.add(new EmbarqueDTO(e));
 		return lista;
-		
-//		lista.add(new EmbarqueDTO(new AviaoModel(1, "Embraer E-190", 2022, 100, 200)));
-//	    lista.add(new EmbarqueDTO(new AviaoModel(2, "Boeing 747", 2020, 400, 500)));
-//	    lista.add(new EmbarqueDTO(new AviaoModel(3, "Airbus A380", 2021, 300, 400)));
-//	    lista.add(new EmbarqueDTO(new AviaoModel(4, "Boeing 787", 2019, 200, 300)));
-//	    lista.add(new EmbarqueDTO(new AviaoModel(5, "Boeing 737", 2018, 150, 250)));
-//	    lista.add(new EmbarqueDTO(new AviaoModel(6, "Embraer E-195", 2020, 100, 200)));
-//	    lista.add(new EmbarqueDTO(new AviaoModel(7, "Airbus A320", 2019, 200, 300)));
-//	    lista.add(new EmbarqueDTO(new AviaoModel(8, "Boeing 767", 2021, 250, 350)));
-//	    lista.add(new EmbarqueDTO(new AviaoModel(9, "Airbus A330", 2020, 300, 400)));
-//	    lista.add(new EmbarqueDTO(new AviaoModel(10, "Boeing 777", 2022, 350, 450)));
-//		
-		
+
 	}
 
 	@GetMapping
@@ -62,22 +50,10 @@ public class AviaoController {
 		}else {
 			manutecao = (ArrayList<AviaoModel>)AviaoRepository.findByModelo(prefixo);
 		}
-		
-		
+
 		for (AviaoModel m:manutecao)
 			lista.add(new ManutencaoDTO(m));
-		
-//		lista.add(new ManutencaoDTO(new AviaoModel(1, "Embraer E-190", 2022, 100, 200)));
-//	    lista.add(new ManutencaoDTO(new AviaoModel(2, "Boeing 747", 2020, 400, 500)));
-//	    lista.add(new ManutencaoDTO(new AviaoModel(3, "Airbus A380", 2021, 300, 400)));
-//	    lista.add(new ManutencaoDTO(new AviaoModel(4, "Boeing 787", 2019, 200, 300)));
-//	    lista.add(new ManutencaoDTO(new AviaoModel(5, "Boeing 737", 2018, 150, 250)));
-//	    lista.add(new ManutencaoDTO(new AviaoModel(6, "Embraer E-195", 2020, 100, 200)));
-//	    lista.add(new ManutencaoDTO(new AviaoModel(7, "Airbus A320", 2019, 200, 300)));
-//	    lista.add(new ManutencaoDTO(new AviaoModel(8, "Boeing 767", 2021, 250, 350)));
-//	    lista.add(new ManutencaoDTO(new AviaoModel(9, "Airbus A330", 2020, 300, 400)));
-//	    lista.add(new ManutencaoDTO(new AviaoModel(10, "Boeing 777", 2022, 350, 450)));
-		
+
 		return lista;
 	}
 	
