@@ -1,4 +1,4 @@
-package com.flydegas.voos.controller.dto.cadastros;
+package com.flydegas.voos.controller.dtos.cadastros;
 
 import com.flydegas.voos.model.AviaoModel;
 import lombok.AllArgsConstructor;

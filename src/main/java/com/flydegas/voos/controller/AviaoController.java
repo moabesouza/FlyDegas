@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.flydegas.voos.controller.dto.cadastros.CadastroAviaoDTO;
-import com.flydegas.voos.controller.dto.EmbarqueDTO;
-import com.flydegas.voos.controller.dto.ManutencaoDTO;
+import com.flydegas.voos.controller.dtos.cadastros.CadastroAviaoDTO;
+import com.flydegas.voos.controller.dtos.index.aviao.EmbarqueDTO;
+import com.flydegas.voos.controller.dtos.index.aviao.ManutencaoDTO;
 import com.flydegas.voos.form.AviaoForm;
 import com.flydegas.voos.model.*;
 import com.flydegas.voos.repository.AviaoRepository;
@@ -95,6 +95,4 @@ public class AviaoController {
 	}
 	}
 
-	public static class ViagemController {
-	}
 }
