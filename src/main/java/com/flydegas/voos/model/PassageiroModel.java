@@ -14,6 +14,6 @@ public class PassageiroModel {
     private Long passageiro_id;
     @Column(nullable = false, length = 250)
     private String nome;
-    @OneToMany(mappedBy = "passageiro")
+    @OneToMany(mappedBy = "passageiro")//um-para-muitos
     private List<ViagemModel> viagens;
 }

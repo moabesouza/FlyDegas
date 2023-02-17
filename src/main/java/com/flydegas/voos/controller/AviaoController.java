@@ -17,14 +17,14 @@ import com.flydegas.voos.form.AviaoForm;
 import com.flydegas.voos.model.*;
 import com.flydegas.voos.repository.AviaoRepository;
 @RestController
-@RequestMapping("/aviao/")
+@RequestMapping("/aviao")
 public class AviaoController {
 	
 	@Autowired
 	private AviaoRepository AviaoRepository;
 	
 	@GetMapping
-	@RequestMapping("embarque/")
+	@RequestMapping("/embarque")
 	public ArrayList<EmbarqueDTO> Embarque_List (String modelo){
 		ArrayList<EmbarqueDTO> lista = new ArrayList<EmbarqueDTO>();
 		ArrayList<AviaoModel> embarque;
@@ -40,7 +40,7 @@ public class AviaoController {
 	}
 
 	@GetMapping
-	@RequestMapping("manutencao/")
+	@RequestMapping("/manutencao")
 	public ArrayList<ManutencaoDTO> Manutencao_List (String prefixo){
 		ArrayList<ManutencaoDTO> lista = new ArrayList<ManutencaoDTO>();
          ArrayList<AviaoModel> manutecao;
@@ -66,7 +66,7 @@ public class AviaoController {
 		return ResponseEntity.ok(adto);
 	}
 
-	@PutMapping("{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity <CadastroAviaoDTO> alterarUsuario(@PathVariable Long id, @RequestBody AviaoForm aviaoForm){
 	if(AviaoRepository.existsById(id)) {
 		
@@ -81,7 +81,7 @@ public class AviaoController {
 
 	}
 
-	@DeleteMapping("{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity <CadastroAviaoDTO> deletarUsuario(@PathVariable Long id){
 	if(AviaoRepository.existsById(id)) {
 		AviaoModel aviao = AviaoRepository.findById(id).get();
