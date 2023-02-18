@@ -51,4 +51,6 @@ public class AviaoModel {
 		this.autonomia = autonomia;
 		this.numPassageiros = numPassageiros;
 	}
+
+
 }

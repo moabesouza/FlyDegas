@@ -1,7 +1,12 @@
 package com.flydegas.voos.controller;
 import java.util.ArrayList;
+
+import com.flydegas.voos.controller.dtos.cadastros.CadastroAviaoDTO;
+import com.flydegas.voos.controller.dtos.index.aviao.EmbarqueDTO;
+import com.flydegas.voos.controller.dtos.index.aviao.ManutencaoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,9 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.flydegas.voos.controller.dtos.cadastros.CadastroAviaoDTO;
-import com.flydegas.voos.controller.dtos.index.aviao.EmbarqueDTO;
-import com.flydegas.voos.controller.dtos.index.aviao.ManutencaoDTO;
+
 import com.flydegas.voos.form.AviaoForm;
 import com.flydegas.voos.model.*;
 import com.flydegas.voos.repository.AviaoRepository;
@@ -22,7 +25,8 @@ public class AviaoController {
 	
 	@Autowired
 	private AviaoRepository AviaoRepository;
-	
+
+
 	@GetMapping
 	@RequestMapping("/embarque")
 	public ArrayList<EmbarqueDTO> Embarque_List (String modelo){
@@ -58,7 +62,7 @@ public class AviaoController {
 	}
 	
 	@PostMapping
-	public ResponseEntity <CadastroAviaoDTO> inserir (@RequestBody AviaoForm aviaoForm) {
+	public ResponseEntity <CadastroAviaoDTO> cadastrarAviao (@RequestBody AviaoForm aviaoForm) {
 		
 		AviaoModel a = aviaoForm.ToAviao();
 		AviaoRepository.save(a);
@@ -67,7 +71,7 @@ public class AviaoController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity <CadastroAviaoDTO> alterarUsuario(@PathVariable Long id, @RequestBody AviaoForm aviaoForm){
+	public ResponseEntity <CadastroAviaoDTO> alterarAviao(@PathVariable Long id, @RequestBody AviaoForm aviaoForm){
 	if(AviaoRepository.existsById(id)) {
 		
 		AviaoModel aviao = AviaoRepository.findById(id).get();
@@ -82,7 +86,7 @@ public class AviaoController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity <CadastroAviaoDTO> deletarUsuario(@PathVariable Long id){
+	public ResponseEntity <CadastroAviaoDTO> deletarAviao(@PathVariable Long id){
 	if(AviaoRepository.existsById(id)) {
 		AviaoModel aviao = AviaoRepository.findById(id).get();
 		CadastroAviaoDTO ad = new CadastroAviaoDTO(aviao);
