@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class PilotoDTO {
 
-    private Long id;
+    private Long piloto_id;
     private String nome;
     private String numeroLicenca;
     private int idade;
@@ -16,7 +16,7 @@ public class PilotoDTO {
     }
 
     public PilotoDTO(PilotoModel piloto) {
-        this.id = piloto.getPiloto_id();
+        this.piloto_id = piloto.getPiloto_id();
         this.nome = piloto.getNome();
         this.numeroLicenca = piloto.getNumeroLicenca();
         this.idade = piloto.getIdade();
