@@ -2,13 +2,17 @@ package com.flydegas.voos.services;
 
 import com.flydegas.voos.controller.dtos.cadastros.CadastroPilotoDTO;
 import com.flydegas.voos.controller.dtos.index.piloto.PilotoDTO;
+import com.flydegas.voos.controller.dtos.mapper.PilotoMapper;
+import com.flydegas.voos.exception.ResourceNotFoundException;
 import com.flydegas.voos.model.PilotoModel;
 import com.flydegas.voos.repository.PilotoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -21,6 +25,9 @@ public class PilotoService {
     public PilotoService(PilotoRepository pilotoRepository) {
         this.pilotoRepository = pilotoRepository;
     }
+
+    @Autowired
+    private MessageSource messageSource;
 
     public PilotoDTO criar(CadastroPilotoDTO cadastroPilotoDTO) {
         PilotoModel piloto = new PilotoModel();
@@ -39,8 +46,14 @@ public class PilotoService {
     }
 
     public PilotoDTO buscarPorNumeroLicenca(String numeroLicenca) {
-        PilotoModel piloto = pilotoRepository.findByNumeroLicenca(numeroLicenca).orElseThrow(() -> new EntityNotFoundException("Piloto não encontrado com a Licença: " + numeroLicenca));
-        return new PilotoDTO(piloto);
+        PilotoModel pilotoModel = pilotoRepository.findByNumeroLicenca(numeroLicenca)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        messageSource.getMessage("piloto.not.found", new Object[] {numeroLicenca}, Locale.getDefault())));
+
+        PilotoMapper mapper = new PilotoMapper();
+        PilotoDTO pilotoDTO = mapper.toDTO(pilotoModel);
+
+        return pilotoDTO;
     }
 
     public List<PilotoDTO> listarTodos() {
