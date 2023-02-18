@@ -35,9 +35,13 @@ public class PilotoController {
     }
 
     @GetMapping("/licenca/{numeroLicenca}")
-    public ResponseEntity<PilotoDTO> buscarPorNumeroLicenca(@PathVariable String numeroLicenca) {
-        PilotoDTO pilotoDTO = pilotoService.buscarPorNumeroLicenca(numeroLicenca);
-        return ResponseEntity.ok(pilotoDTO);
+    public ResponseEntity<Object> buscarPorNumeroLicenca(@PathVariable String numeroLicenca) {
+        try {
+            PilotoDTO pilotoDTO = pilotoService.buscarPorNumeroLicenca(numeroLicenca);
+            return ResponseEntity.ok(pilotoDTO);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
     @GetMapping
