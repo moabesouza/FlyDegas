@@ -1,8 +1,8 @@
-package com.flydegas.voos.controller;
+package com.flydegas.api.controllers;
 
-import com.flydegas.voos.controller.dtos.cadastros.CadastroPilotoDTO;
-import com.flydegas.voos.controller.dtos.index.piloto.PilotoDTO;
-import com.flydegas.voos.services.PilotoService;
+import com.flydegas.api.dtos.cadastros.CadastroPilotoDTO;
+import com.flydegas.api.dtos.index.piloto.PilotoDTO;
+import com.flydegas.api.services.PilotoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,9 +29,14 @@ public class PilotoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PilotoDTO> buscarPorId(@PathVariable Long id) {
-        PilotoDTO pilotoDTO = pilotoService.buscarPorId(id);
-        return ResponseEntity.ok(pilotoDTO);
+    public ResponseEntity<Object> buscarPorId(@PathVariable Long id) {
+        try {
+            PilotoDTO pilotoDTO = pilotoService.buscarPorId(id);
+            return ResponseEntity.ok(pilotoDTO);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+
     }
 
     @GetMapping("/licenca/{numeroLicenca}")

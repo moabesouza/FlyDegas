@@ -1,10 +1,9 @@
-package com.flydegas.voos.model;
+package com.flydegas.api.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -18,7 +17,6 @@ public class VooModel {
     @ManyToOne
     @JoinColumn(name = "aviao_id")
     private AviaoModel aviao;
-
     @ManyToOne
     @JoinColumn(name = "aeroporto_saida_id")
     private AeroportoModel aeroportoSaida;
@@ -31,7 +29,9 @@ public class VooModel {
     private LocalTime horaSaida;
     @Column(nullable = false)
     private LocalTime horaChegada;
-
     @OneToMany(mappedBy = "voo")
     private List<ViagemModel> viagens;
+    @OneToMany(mappedBy = "voo")
+    private List<AgendaModel> agendas;
+
 }
