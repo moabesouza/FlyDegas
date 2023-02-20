@@ -1,4 +1,4 @@
-package com.flydegas.voos.model;
+package com.flydegas.api.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,9 +16,13 @@ public class AgendaModel {
     @Column(nullable = false)
     private LocalDate data;
     @ManyToOne
-    @JoinColumn(name = "piloto_id")
+    @JoinColumn(name = "piloto_id", nullable = false)
     private PilotoModel piloto;
+
     @OneToMany(mappedBy = "agenda")
     private List<ViagemModel> viagens;
+    @ManyToOne
+    @JoinColumn(name = "voo_id")
+    private VooModel voo;
 
 }
