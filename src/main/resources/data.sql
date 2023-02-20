@@ -4,9 +4,10 @@ VALUES
 ('Aeroporto de Guarulhos', 'São Paulo', 'Brasil'),
 ('Aeroporto de Congonhas', 'São Paulo', 'Brasil'),
 ('Aeroporto Internacional do Rio de Janeiro', 'Rio de Janeiro', 'Brasil'),
-('Aeroporto Internacional de Nova Iorque', 'Nova Iorque', 'Estados Unidos'),
-('Aeroporto de Frankfurt', 'Frankfurt', 'Alemanha'),
-('Aeroporto Internacional de Dubai', 'Dubai', 'Emirados Árabes Unidos');
+('Aeroporto de Brasília', 'Brasília', 'Brasil'),
+('Aeroporto Internacional de Recife', 'Recife', 'Brasil'),
+('Aeroporto Internacional de Salvador', 'Salvador', 'Brasil');
+
 
 --------------------------TABELA AVIÃO----------------------------
 INSERT INTO AVIAO (prefixo, modelo, ano, autonomia, num_Passageiros)

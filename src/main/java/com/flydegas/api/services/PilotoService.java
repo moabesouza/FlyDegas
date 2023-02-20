@@ -4,7 +4,7 @@ import com.flydegas.api.dtos.cadastros.CadastroPilotoDTO;
 import com.flydegas.api.dtos.index.piloto.PilotoDTO;
 import com.flydegas.api.dtos.mappers.PilotoMapper;
 import com.flydegas.api.exception.ResourceNotFoundException;
-import com.flydegas.api.models.PilotoModel;
+import com.flydegas.api.model.PilotoModel;
 import com.flydegas.api.repositories.PilotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -34,7 +34,6 @@ public class PilotoService {
         piloto.setNumeroLicenca(cadastroPilotoDTO.getNumeroLicenca());
         piloto.setIdade(cadastroPilotoDTO.getIdade());
         piloto.setAnoExperiencia(cadastroPilotoDTO.getAnoExperiencia());
-
         PilotoModel pilotoSalvo = pilotoRepository.save(piloto);
         return new PilotoDTO(pilotoSalvo);
     }
@@ -46,9 +45,7 @@ public class PilotoService {
                 ));
 
         PilotoMapper mapper = new PilotoMapper();
-
         PilotoDTO pilotoDTO = mapper.toDTO(pilotoModel);
-
         return pilotoDTO;
     }
 
@@ -56,7 +53,6 @@ public class PilotoService {
         PilotoModel pilotoModel = pilotoRepository.findByNumeroLicenca(numeroLicenca)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         messageSource.getMessage("piloto.not.found", new Object[] {numeroLicenca}, Locale.getDefault())));
-
         PilotoMapper mapper = new PilotoMapper();
         PilotoDTO pilotoDTO = mapper.toDTO(pilotoModel);
 
@@ -96,7 +92,5 @@ public class PilotoService {
 
         pilotoRepository.delete(pilotoModel);
     }
-
-
 
 }

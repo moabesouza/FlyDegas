@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Listar Pilotos</title>
+
+  <!-- Adiciona o link para o Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>Listar Pilotos</h1>
+
+  <!-- Barra de busca -->
+  <div class="input-group">
+    <input id = "pesquisarPiloto"  type="text" class="form-control"  placeholder="Nome do piloto">
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="button" id="btnPesquisar">Pesquisar</button>
+    </div>
+  </div>
+
+  <br>
+
+  <table class="table table-striped" id="pilotosTable">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Número da Licença</th>
+      <th>Idade</th>
+      <th>Anos de Experiência</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop para exibir os pilotos -->
+    <th:block th:each="piloto : ${pilotos}">
+      <tr>
+        <td th:text="${piloto.piloto_id}"></td>
+        <td th:text="${piloto.nome}"></td>
+        <td th:text="${piloto.numeroLicenca}"></td>
+        <td th:text="${piloto.idade}"></td>
+        <td th:text="${piloto.anoExperiencia}"></td>
+        <td>
+          <a class="btn btn-info" th:href="@{/piloto/detalhe/{id}(id=${piloto.piloto_id})}">Detalhe</a>
+          <a class="btn btn-warning" th:href="@{/piloto/editar/{id}(id=${piloto.piloto_id})}">Editar</a>
+          <a th:href="@{/piloto/excluir/{id}(id=${piloto.piloto_id})}" class="btn btn-danger" method="post">Excluir</a>
+
+        </td>
+      </tr>
+    </th:block>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- Adiciona o link para o Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

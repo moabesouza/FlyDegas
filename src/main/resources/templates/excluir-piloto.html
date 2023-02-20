@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmação de Exclusão</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>Confirmação de Exclusão</h1>
+  <div class="card">
+    <div class="card-header">
+      Tem certeza que deseja excluir o piloto <strong th:text="${piloto.nome}"></strong>?
+    </div>
+    <div class="card-body">
+      <form th:action="@{/piloto/excluir/{id}(id=${piloto.piloto_id})}" method="POST">
+        <button type="submit" class="btn btn-danger">Sim, excluir</button>
+        <a th:href="@{/piloto/consultar}" class="btn btn-secondary">Não, cancelar</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Adiciona o link para o Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
