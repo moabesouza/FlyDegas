@@ -13,16 +13,25 @@ public class CadastroAviaoDTO {
 	private int autonomia;
 	private int numPassageiros;
 
-	
-	public CadastroAviaoDTO(@NotNull AviaoModel A) {
-		super();
-		this.prefixo = A.getPrefixo();
-		this.modelo = A.getModelo();
-		this.ano = A.getAno();
-		this.autonomia = A.getAutonomia();
-		this.numPassageiros = A.getNumPassageiros();
-
+	public CadastroAviaoDTO() {
+		// construtor sem argumentos
 	}
 
+	public CadastroAviaoDTO(@NotNull AviaoModel aviao) {
+		this.prefixo = aviao.getPrefixo();
+		this.modelo = aviao.getModelo();
+		this.ano = aviao.getAno();
+		this.autonomia = aviao.getAutonomia();
+		this.numPassageiros = aviao.getNumPassageiros();
+	}
 
+	public AviaoModel toAviaoModel() {
+		AviaoModel aviao = new AviaoModel();
+		aviao.setPrefixo(this.prefixo);
+		aviao.setModelo(this.modelo);
+		aviao.setAno(this.ano);
+		aviao.setAutonomia(this.autonomia);
+		aviao.setNumPassageiros(this.numPassageiros);
+		return aviao;
+	}
 }

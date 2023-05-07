@@ -1,13 +1,13 @@
 package com.flydegas.api.controllers;
 
 import com.flydegas.api.dtos.cadastros.CadastroPilotoDTO;
-import com.flydegas.api.dtos.forms.PilotoForm;
+
 import com.flydegas.api.dtos.index.piloto.PilotoDTO;
-import com.flydegas.api.model.PilotoModel;
+
 import com.flydegas.api.services.PilotoService;
-import jakarta.persistence.PostUpdate;
+
 import jakarta.validation.Valid;
-import org.jetbrains.annotations.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Controller
 @RequestMapping("/piloto")
